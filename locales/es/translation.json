@@ -1,0 +1,73 @@
+{
+  "title": "Acortador de Enlaces en Línea",
+  "description": "Este sitio web ofrece el servicio de acortar enlaces completamente gratis, para utilizarlo correctamente solo necesitas ingresar un enlace válido existente que comience con http o https.",
+  "form": {
+    "placeholder": "Por favor ingrese una url válida",
+    "submit": "Acortar",
+    "urlTitle": "Enlace acortado"
+  },
+  "history": {
+    "title": "Historial",
+    "empty": "Historial vacío"
+  },
+  "sponsor": "Patrocine el proyecto via Paypal",
+  "faq": {
+    "title": "Preguntas Frecuentes (FAQ)",
+    "list": [
+      {
+        "marker": "1.",
+        "question": "¿Qué es el Acortador de Enlaces en Línea?",
+        "answer": "Acortador de Enlaces en Línea es un servicio gratuito que le permite reducir la longitud de sus enlaces para hacerlos más manejables y fáciles de compartir."
+      },
+      {
+        "marker": "2.",
+        "question": "¿Como funciona?",
+        "answer": "Sólo necesita pegar su enlace original en nuestra herramienta y obtendrá un enlace más corto que le redirigirá a la página original. Es rápido, sencillo y gratuito."
+      },
+      {
+        "marker": "3.",
+        "question": "¿Por qué debería utilizar Link Shortener Online?",
+        "answer": "Nuestro servicio facilita compartir enlaces largos, especialmente en plataformas con límites de caracteres. Además, ofrece un aspecto más limpio y profesional."
+      },
+      {
+        "marker": "4.",
+        "question": "¿Es realmente gratis?",
+        "answer": "Sí, Link Shortener Online es completamente gratuito para todos los usuarios. No hay tarifas ni suscripciones ocultas."
+      },
+      {
+        "marker": "5.",
+        "question": "¿Aceptamos donaciones?",
+        "answer": "Sí, aceptamos donaciones para ayudar a mantener nuestro servicio gratuito y mejorar la calidad. Puede donar a través de PayPal haciendo clic en el botón donar en nuestra página."
+      },
+      {
+        "marker": "6.",
+        "question": "¿Puedo confiar en la privacidad de mis enlaces acortados?",
+        "answer": "Sí, respetamos la privacidad de nuestros usuarios. No almacenamos información personal ni compartimos datos con terceros. Tu privacidad es nuestra prioridad."
+      },
+      {
+        "marker": "7.",
+        "question": "¿Cuánto tiempo estarán activos mis enlaces acortados?",
+        "answer": "Los enlaces acortados son permanentes a menos que decida eliminarlos manualmente. Sin embargo, tenga en cuenta que nos reservamos el derecho de eliminar enlaces que violen nuestras políticas."
+      },
+      {
+        "marker": "8.",
+        "question": "¿Ofrecemos estadísticas de clics?",
+        "answer": "Actualmente, no ofrecemos estadísticas de clics. Estamos trabajando para mejorar y agregar funciones adicionales en futuras actualizaciones."
+      }
+    ]
+  },
+  "menuMobile": {
+    "appearance": "Apariencia",
+    "language": "Idioma"
+  },
+  "icons": {
+    "copyUrl": "Copiar enlace",
+    "showUrl": "Mostrar enlace",
+    "hideUrl": "Ocultar enlace",
+    "deleteUrl": "Eliminar"
+  },
+  "modal": {
+    "copyUrl": "Copiado al portapapeles",
+    "deleteUrl": "Enlace eliminado"
+  }
+}

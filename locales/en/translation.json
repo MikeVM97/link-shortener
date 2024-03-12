@@ -1,0 +1,73 @@
+{
+  "title": "Link Shortener Online",
+  "description": "This website offers the service of cutting links completely free, to use it correctly you only need to enter a valid existing link that begins with http or https.",
+  "form": {
+    "placeholder": "Please enter a valid url",
+    "submit": "Shrink",
+    "urlTitle": "Link shortened"
+  },
+  "history": {
+    "title": "History",
+    "empty": "Empty history"
+  },
+  "sponsor": "Sponsor the project via Paypal",
+  "faq": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "list": [
+      {
+        "marker": "1.",
+        "question": "What is Link Shortener Online?",
+        "answer": "Link Shortener Online is a free service that allows you reduce the length of your links to make them more manageable and easy to share."
+      },
+      {
+        "marker": "2.",
+        "question": "How does it work?",
+        "answer": "You just need to paste your original link into our tool and you will get a shorter link that redirects to the original page. It's fast, simple and free."
+      },
+      {
+        "marker": "3.",
+        "question": "Why should you use Link Shortener Online?",
+        "answer": "Our service makes it easy to share long links, especially on platforms with character limits. Plus, it offers a cleaner, more professional look."
+      },
+      {
+        "marker": "4.",
+        "question": "Is it really free?",
+        "answer": "Yes, Link Shortener Online is completely free for all users. There are no hidden fees or subscriptions."
+      },
+      {
+        "marker": "5.",
+        "question": "Do we accept donations?",
+        "answer": "Yes, we accept donations to help keep our service free and improve quality. You can donate through PayPal by clicking the donate button on our page."
+      },
+      {
+        "marker": "6.",
+        "question": "Can I trust the privacy of my shortened links?",
+        "answer": "Yes, we respect the privacy of our users. We do not store personal information or share data with third parties. Your privacy is our priority."
+      },
+      {
+        "marker": "7.",
+        "question": "How long will my shortened links be active?",
+        "answer": "Shortened links are permanent unless you decide to manually remove them. However, please note that we reserve the right to remove links that violate our policies."
+      },
+      {
+        "marker": "8.",
+        "question": "Do we offer click statistics?",
+        "answer": "Currently, we do not offer click statistics. We are working to improve and add additional features in future updates."
+      }
+    ]
+  },
+  "menuMobile": {
+    "appearance": "Appearance",
+    "language": "Language"
+  },
+  "icons": {
+    "copyUrl": "Copy link",
+    "showUrl": "Show link",
+    "hideUrl": "Hide link",
+    "deleteUrl": "Delete"
+  },
+  "modal": {
+    "copyUrl": "Copied to the clipboard",
+    "deleteUrl": "Link deleted"
+  }
+}
