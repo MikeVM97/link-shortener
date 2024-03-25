@@ -15,7 +15,8 @@ export default function UrlShortResult() {
   const [path, setPath] = useState("");
 
   useEffect(() => {
-    const absolute = window.location.href + form.code;
+    const absolute =
+      window.location.href.replace(/^https?:\/\//, "") + form.code;
     setPath(absolute);
   }, [path, form.code]);
 

@@ -22,7 +22,8 @@ export default function HistoryComponent() {
         {history.length > 0 ? (
           <ul className="flex flex-col justify-center gap-y-5">
             {history.map((code: string, index) => {
-              const result = window.location.href + code;
+              const result =
+                window.location.href.replace(/^https?:\/\//, "") + code;
               return (
                 <HistoryItem
                   key={index}
