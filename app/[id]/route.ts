@@ -5,7 +5,6 @@ export async function GET(req: Request) {
   try {
     await connectDB();
     const id = req.url.slice(req.url.lastIndexOf("/") + 1);
-    // if (!id
     const linkFound = await LinkModel.findOne({ short: id });
     if (!linkFound) {
       return new Response(NOT_FOUND_HTML, {
@@ -21,9 +20,9 @@ export async function GET(req: Request) {
 
 const NOT_FOUND_HTML = `<div style="width: 100%; height: 100%; display: grid; place-content: center; text-align: center;">
     <p>
-      Este enlace acortado aun no existe en nuestra base de datos
+      This shortened link does not yet exist in our database
     </p>
     <p>
-      Puede obtener este o cualquier otro enlace personalizado visitando <a href="/">Link Shortener</a>
+      You can get this or any other custom link by visiting <a href="/">Link Shortener</a>
     </p>
   </div>`;
