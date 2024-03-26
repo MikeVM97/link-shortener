@@ -14,10 +14,7 @@ export async function POST(req: Request) {
       const codeExists = await LinkModel.findOne({ short: output });
 
       if (codeExists) {
-        return Response.json(
-          { error: "The sub page already exists, try another one." },
-          { status: 400 }
-        );
+        return Response.json({ error: "subPageExists" }, { status: 400 });
       }
     }
 

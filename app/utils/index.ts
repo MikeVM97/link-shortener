@@ -25,7 +25,7 @@ export function validateURL(url: string) {
   if (new URL(url)) {
     return true;
   } else {
-    throw new Error("Invalid URL");
+    throw new Error("invalidURL");
   }
 }
 
@@ -35,8 +35,6 @@ export function validateSubPage(code: string) {
   if (test) {
     return true;
   } else {
-    throw new Error(
-      "Invalid subpage, subpages can only contain letters, numbers and hyphens."
-    );
+    throw new Error("invalidSubPage");
   }
 }
