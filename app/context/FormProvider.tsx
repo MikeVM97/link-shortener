@@ -2,16 +2,18 @@
 import { createContext, Dispatch, ReactNode, useReducer } from "react";
 
 type Form = {
-  value: string | null;
-  code: string | null;
-  error: string | null;
+  inputUrl: string;
+  outputUrl: string;
+  code: string;
+  error: string;
   isLoading: boolean;
 };
 
 type Action =
-  | { type: "value"; value: string | null }
-  | { type: "code"; code: string | null }
-  | { type: "error"; error: string | null }
+  | { type: "inputUrl"; inputUrl: string }
+  | { type: "outputUrl"; outputUrl: string }
+  | { type: "code"; code: string }
+  | { type: "error"; error: string }
   | { type: "loading"; isLoading: boolean }
   | { type: "initSubmit" }
   | { type: "unknown" };
@@ -35,10 +37,16 @@ export default function FormProvider({ children }: { children: ReactNode }) {
 
 function formReducer(form: Form, action: Action) {
   switch (action.type) {
-    case "value": {
+    case "inputUrl": {
       return {
         ...form,
-        value: action.value,
+        inputUrl: action.inputUrl,
+      };
+    }
+    case "outputUrl": {
+      return {
+        ...form,
+        outputUrl: action.outputUrl,
       };
     }
     case "code": {
@@ -62,8 +70,8 @@ function formReducer(form: Form, action: Action) {
     case "initSubmit": {
       return {
         ...form,
-        code: null,
-        error: null,
+        code: "",
+        error: "",
         isLoading: true,
       };
     }
@@ -74,8 +82,9 @@ function formReducer(form: Form, action: Action) {
 }
 
 const initialState = {
-  value: null,
-  code: null,
-  error: null,
+  inputUrl: "",
+  outputUrl: "",
+  code: "",
+  error: "",
   isLoading: false,
 };
