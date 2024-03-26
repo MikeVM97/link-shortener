@@ -4,7 +4,10 @@
   "form": {
     "placeholder": "Por favor ingrese una url válida",
     "submit": "Acortar",
-    "urlTitle": "Enlace acortado"
+    "urlTitle": "Enlace acortado",
+    "optional-1": "Opcionalmente puede obtener su enlace acortado personalizado, solo si está disponible.",
+    "optional-2": "Para ello debe colocar una sub página válida, por ejemplo: hbo-max",
+    "placeholder-optional": "Por favor ingrese una sub página válida"
   },
   "history": {
     "title": "Historial",
@@ -69,5 +72,8 @@
   "modal": {
     "copyUrl": "Copiado al portapapeles",
     "deleteUrl": "Enlace eliminado"
-  }
+  },
+  "subPageExists": "La subpágina ya existe, prueba con otra.",
+  "invalidURL": "URL inválido.",
+  "invalidSubPage": "Subpágina no válida; las subpáginas solo pueden contener letras, números y guiones."
 }

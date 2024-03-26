@@ -4,7 +4,10 @@
   "form": {
     "placeholder": "Please enter a valid url",
     "submit": "Shrink",
-    "urlTitle": "Link shortened"
+    "urlTitle": "Link shortened",
+    "optional-1": "You can optionally get your custom shortened link, just if available",
+    "optional-2": "To do this you must place a valid sub page, for example: hbo-max",
+    "placeholder-optional": "Please enter a valid subpage"
   },
   "history": {
     "title": "History",
@@ -69,5 +72,8 @@
   "modal": {
     "copyUrl": "Copied to the clipboard",
     "deleteUrl": "Link deleted"
-  }
+  },
+  "subPageExists": "The sub page already exists, try another one.",
+  "invalidURL": "Invalid URL.",
+  "invalidSubPage": "Invalid subpage, subpages can only contain letters, numbers and hyphens."
 }
