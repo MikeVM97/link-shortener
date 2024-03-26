@@ -1,12 +1,9 @@
 import { Schema, model } from "mongoose";
 
-const linkSchema = new Schema(
-  {
-    origin: { type: String, required: true },
-    short: { type: String, required: true },
-  },
-  { timestamps: true }
-);
+const linkSchema = new Schema({
+  origin: { type: String, required: true },
+  short: { type: String, required: true },
+});
 
 // linkSchema.set("toJSON", {
 //   transform: (_document, objReturned) => {
