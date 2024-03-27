@@ -15,6 +15,23 @@ export const metadata: Metadata = {
   description: "link shortener online for free",
   alternates: {
     canonical: "http://localhost:3000",
+    // languages: {
+    //   en: "http://localhost:3000",
+    //   es: "http://es.localhost:3000",
+    // },
+  },
+  keywords: [
+    "link shortener",
+    "url shortener",
+    "acortador de enlaces",
+    "acortador de links",
+  ],
+  authors: {
+    name: "Maycol Vivanco",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
