@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Link Shortener Online",
   description: "link shortener online for free",
+  alternates: {
+    canonical: "http://localhost:3000",
+  },
 };
 
 export default function RootLayout({

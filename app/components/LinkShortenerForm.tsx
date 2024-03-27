@@ -75,6 +75,7 @@ export default function LinkShortenerForm() {
           }
           required
           className="border-2 border-black w-full p-1"
+          alt="Input field for url"
         />
         <p className="text-center">{t("form.optional-1")}</p>
         <p className="text-center">{t("form.optional-2")}</p>
@@ -88,11 +89,13 @@ export default function LinkShortenerForm() {
             });
           }}
           className="w-full p-1 border-2 border-black"
+          alt="Input field for sub page"
         />
         <input
           type="submit"
           value={t("form.submit")}
           className="border-none bg-slate-600 text-white dark:bg-slate-600 dark:text-white cursor-pointer p-1 rounded-lg font-bold"
+          alt="Button for submit form"
         />
       </form>
       <LoaderIcon />
