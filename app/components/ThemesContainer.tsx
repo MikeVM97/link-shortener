@@ -17,15 +17,15 @@ export default function ThemesContainer({
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const target = e.currentTarget;
-    updateTheme(target.id as ThemeType);
+    updateTheme(target.title as ThemeType);
   }
 
   return (
     <div className={`${styles} ${mediaQuery}`}>
       <button
         type="button"
-        id="light"
-        data-testid="light-mode"
+        title="light"
+        aria-label="Light mode button"
         onClick={(e) => handleClick(e)}
         className={`${
           theme === "light" ? "bg-gray-200" : "group"
@@ -35,7 +35,8 @@ export default function ThemesContainer({
       </button>
       <button
         type="button"
-        id="system"
+        title="system"
+        aria-label="System mode button"
         onClick={(e) => handleClick(e)}
         className={`${
           theme === "system" ? "bg-gray-200" : "group"
@@ -45,7 +46,8 @@ export default function ThemesContainer({
       </button>
       <button
         type="button"
-        id="dark"
+        title="dark"
+        aria-label="Dark mode button"
         onClick={(e) => handleClick(e)}
         className={`${
           theme === "dark" ? "bg-gray-200" : "group"
