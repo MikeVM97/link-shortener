@@ -1,6 +1,6 @@
 import LinkModel from "../models/links";
 import connectDB from "./connect-db";
-import { generateRandomKey, isValidUrl } from "../utils";
+import { generateRandomKey, validateURL } from "../utils";
 
 export async function getDB() {
   try {
