@@ -1,9 +1,11 @@
 import { MetadataRoute } from "next";
 
+const URL = window.location.href;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "http://localhost:3000",
+      url: URL,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,

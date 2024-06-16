@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+const URL = window.location.href;
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "http://localhost:3000/sitemap.xml",
+    sitemap: `${URL}/sitemap.xml`,
   };
 }
