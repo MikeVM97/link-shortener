@@ -7,6 +7,7 @@ import ThemeProvider from "./context/ThemeProvider";
 import HistoryProvider from "./context/HistoryProvider";
 import ModalProvider from "./context/ModalProvider";
 import FormProvider from "./context/FormProvider";
+import connectDB from "./lib/connect-db";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectDB();
   return (
     <html lang="en">
       <body className={inter.className}>
