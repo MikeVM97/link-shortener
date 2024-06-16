@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const URL = window.location.href;
+const URL = process.env.CLIENT_HOSTNAME || "http://localhost:3000";
 
 export default function robots(): MetadataRoute.Robots {
   return {
