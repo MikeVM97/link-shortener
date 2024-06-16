@@ -1,4 +1,6 @@
-import { connect } from "mongoose";
+import { connect, Connection } from "mongoose";
+
+let cachedConnection: Connection | null = null;
 
 const username = process.env.DATABASE_USERNAME;
 const password = process.env.DATABASE_PASSWORD;
@@ -12,9 +14,16 @@ if (!MONGODB_URI) {
 }
 
 async function connectDB() {
+  if (cachedConnection) {
+    console.log("Using cached db connection");
+    return cachedConnection;
+  }
+
   try {
-    await connect(MONGODB_URI);
+    const cnx = await connect(MONGODB_URI);
+    cachedConnection = cnx.connection;
     console.log("MongoDB is connected");
+    return cachedConnection;
   } catch (error) {
     console.error(error);
   }

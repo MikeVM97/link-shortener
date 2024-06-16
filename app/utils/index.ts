@@ -21,10 +21,20 @@ export function generateRandomKey(length: number) {
   return key;
 }
 
-export function isValidUrl(url: string) {
+export function validateURL(url: string) {
   if (new URL(url)) {
     return true;
   } else {
-    throw new Error("Invalid URL");
+    throw new Error("invalidURL");
+  }
+}
+
+export function validateSubPage(code: string) {
+  const regex = /^[a-z0-9-]+$/;
+  const test = regex.test(code);
+  if (test) {
+    return true;
+  } else {
+    throw new Error("invalidSubPage");
   }
 }

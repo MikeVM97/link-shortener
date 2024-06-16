@@ -1,9 +1,7 @@
-import connectDB from "@/app/lib/connect-db";
 import LinkModel from "@/app/models/links";
 
 export async function GET(req: Request) {
   try {
-    await connectDB();
     const id = req.url.slice(req.url.lastIndexOf("/") + 1);
     const linkFound = await LinkModel.findOne({ short: id });
     if (!linkFound) {

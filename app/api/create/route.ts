@@ -1,30 +1,41 @@
 import LinkModel from "@/app/models/links";
-import connectDB from "@/app/lib/connect-db";
-import { generateRandomKey, isValidUrl } from "@/app/utils";
+import { generateRandomKey, validateURL, validateSubPage } from "@/app/utils";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
+    const { input, output } = await req.json();
 
-    const { originalURL } = await req.json();
+    if (output.length > 0) {
+      validateSubPage(output);
 
-    isValidUrl(originalURL);
+      const codeExists = await LinkModel.findOne({ short: output });
 
-    const urlExists = await LinkModel.findOne({ origin: originalURL });
+      if (codeExists) {
+        return Response.json({ error: "subPageExists" }, { status: 400 });
+      }
+    }
 
-    if (urlExists)
+    validateURL(input);
+
+    const urlExists = await LinkModel.findOne({ origin: input });
+
+    if (urlExists && output.length === 0) {
       return Response.json({ code: urlExists.short }, { status: 200 });
+    }
 
     const randomCode = await generateRandomCode();
 
     const newItem = new LinkModel({
-      origin: originalURL,
-      short: randomCode,
+      origin: input,
+      short: (output.length > 0 && output) || randomCode,
     });
 
     await newItem.save();
 
-    return Response.json({ code: randomCode }, { status: 200 });
+    return Response.json(
+      { code: (output.length > 0 && output) || randomCode },
+      { status: 200 }
+    );
   } catch (error) {
     if (error instanceof Error) {
       return Response.json({ error: error.message }, { status: 500 });
