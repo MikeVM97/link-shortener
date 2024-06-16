@@ -1,11 +1,10 @@
 import { MetadataRoute } from "next";
-
-const URL = process.env.CLIENT_HOSTNAME || "http://localhost:3000";
+import { URL } from "./constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: URL,
+      url: URL as string,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
