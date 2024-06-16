@@ -1,18 +1,26 @@
-import { Schema, model } from "mongoose";
+import { Schema, Document, Model, model, models } from "mongoose";
 
-const linkSchema = new Schema({
-  origin: { type: String, required: true },
-  short: { type: String, required: true },
+// export interface LinkDocument extends Link, Document {
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
+
+const linkSchema = new Schema<Link>(
+  {
+    origin: { type: String, required: true },
+    short: { type: String, required: true },
+  }
+  // { timestamps: true }
+);
+
+linkSchema.set("toJSON", {
+  transform: (_document, objReturned) => {
+    objReturned.id = objReturned._id;
+    delete objReturned._id;
+    delete objReturned.__v;
+  },
 });
 
-// linkSchema.set("toJSON", {
-//   transform: (_document, objReturned) => {
-//     objReturned.id = objReturned._id;
-//     delete objReturned._id;
-//     delete objReturned.__v;
-//   },
-// });
-
-const LinkModel = model("links", linkSchema);
+const LinkModel: Model<Link> = models?.links || model("links", linkSchema);
 
 export default LinkModel;
