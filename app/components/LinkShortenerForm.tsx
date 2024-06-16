@@ -6,23 +6,21 @@ import LoaderIcon from "../icons/LoaderIcon";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "../hooks/useHistory";
 import { useForm } from "../hooks/useForm";
-import { useState } from "react";
 
 export default function LinkShortenerForm() {
   const { t } = useTranslation();
   const { history, updateHistory } = useHistory();
   const { form, updateForm } = useForm();
-  const [data, setData] = useState({ input: "", output: "" });
 
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     updateForm({
       type: "initSubmit",
     });
-    // const data = {
-    //   input: form.inputUrl,
-    //   output: form.outputUrl,
-    // };
+    const data = {
+      input: form.inputUrl,
+      output: form.outputUrl,
+    };
     try {
       const response: Response = await fetch(`/api/create`, {
         method: "POST",
@@ -69,16 +67,12 @@ export default function LinkShortenerForm() {
         <input
           type="text"
           placeholder={t("form.placeholder")}
-          onChange={(e) => {
+          onChange={(e) =>
             updateForm({
               type: "inputUrl",
               inputUrl: e.target.value,
-            });
-            setData({
-              ...data,
-              input: e.target.value,
-            });
-          }}
+            })
+          }
           required
           className="border-2 border-black w-full p-1"
           alt="Input field for url"
@@ -88,16 +82,12 @@ export default function LinkShortenerForm() {
         <input
           type="text"
           placeholder={t("form.placeholder-optional")}
-          onChange={(e) => {
+          onChange={(e) =>
             updateForm({
               type: "outputUrl",
               outputUrl: e.target.value,
-            });
-            setData({
-              ...data,
-              output: e.target.value,
-            });
-          }}
+            })
+          }
           className="w-full p-1 border-2 border-black"
           alt="Input field for sub page"
         />
