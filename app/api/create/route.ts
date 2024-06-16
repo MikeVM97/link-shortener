@@ -1,11 +1,8 @@
 import LinkModel from "@/app/models/links";
-import connectDB from "@/app/lib/connect-db";
 import { generateRandomKey, validateURL, validateSubPage } from "@/app/utils";
 
 export async function POST(req: Request) {
   try {
-    await connectDB();
-
     const { input, output } = await req.json();
 
     if (output.length > 0) {
