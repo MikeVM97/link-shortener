@@ -1,5 +1,6 @@
 import LinkModel from "@/app/models/links";
 import { generateRandomKey, validateURL, validateSubPage } from "@/app/utils";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
@@ -11,7 +12,7 @@ export async function POST(req: Request) {
       const codeExists = await LinkModel.findOne({ short: output });
 
       if (codeExists) {
-        return Response.json({ error: "subPageExists" }, { status: 400 });
+        return NextResponse.json({ error: "subPageExists" }, { status: 400 });
       }
     }
 
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
     const urlExists = await LinkModel.findOne({ origin: input });
 
     if (urlExists && output.length === 0) {
-      return Response.json({ code: urlExists.short }, { status: 200 });
+      return NextResponse.json({ code: urlExists.short }, { status: 200 });
     }
 
     const randomCode = await generateRandomCode();
@@ -32,14 +33,16 @@ export async function POST(req: Request) {
 
     await newItem.save();
 
-    return Response.json(
+    return NextResponse.json(
       { code: (output.length > 0 && output) || randomCode },
       { status: 200 }
     );
   } catch (error) {
+    console.error("Error in POST /api/create:", error); // Log error details
     if (error instanceof Error) {
-      return Response.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
+    return NextResponse.json({ error: "Unknown error" }, { status: 500 });
   }
 }
 
