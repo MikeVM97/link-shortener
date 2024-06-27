@@ -21,6 +21,7 @@ export default function LinkShortenerForm() {
       input: form.inputUrl,
       output: form.outputUrl,
     };
+    console.log(data);
     try {
       const response: Response = await fetch(`/api/create`, {
         method: "POST",
