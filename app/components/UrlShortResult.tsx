@@ -23,16 +23,12 @@ export default function UrlShortResult() {
   return (
     <div
       className={`text-center m-auto w-fit p-4 ${
-        !form.code ? "hidden" : "block"
+        form.code.length > 0 ? "block" : "hidden"
       }`}
     >
       {t("form.urlTitle")}:{" "}
       <div className="flex items-center justify-center gap-x-3 mt-3">
-        <Link
-          href={!form.code ? "" : form.code}
-          target="_blank"
-          className="font-bold block"
-        >
+        <Link href={form.code} target="_blank" className="font-bold block">
           {path}
         </Link>
         <div
