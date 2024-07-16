@@ -17,7 +17,18 @@ export async function createShortLink(form: FormData) {
   try {
     validateURL(url);
     const urlExists = await LinkModel.findOne({ origin: url });
-    if (urlExists && code.length === 0) return urlExists.short;
+    if (urlExists && code.length === 0) {
+      return {
+        originalURL: urlExists.origin,
+        code: urlExists.short,
+      };
+    }
+    if (urlExists && code.length > 0) {
+      return {
+        originalURL: urlExists.origin,
+        code,
+      };
+    }
     const randomCode = await generateRandomCode();
     const validCode = (code.length > 0 && code) || null;
     const newItem = new LinkModel({
@@ -25,19 +36,32 @@ export async function createShortLink(form: FormData) {
       short: validCode ?? randomCode,
     });
     newItem.save();
+
+    if (!urlExists && code.length > 0) {
+      return {
+        originalURL: newItem.origin,
+        code,
+      };
+    }
+    if (!urlExists && code.length === 0) {
+      return {
+        originalURL: newItem.origin,
+        code: newItem.short,
+      };
+    }
     revalidatePath("/");
-    return newItem.short;
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) {
+      return {
+        error: error.message,
+      };
+    }
   }
 }
 
 async function generateRandomCode() {
   let code = generateRandomKey(6);
-
   const codeExists = await LinkModel.findOne({ short: code });
-
   if (codeExists) generateRandomCode();
-
   return code;
 }
