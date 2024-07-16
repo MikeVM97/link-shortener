@@ -1,5 +1,7 @@
 import LinkModel from "@/app/models/links";
 
+export const maxDuration = 30;
+
 export async function GET(req: Request) {
   try {
     const id = req.url.slice(req.url.lastIndexOf("/") + 1);
