@@ -73,11 +73,22 @@ export default function LinkShortenerForm() {
         }}
         action={async (FormData) => {
           ref.current?.reset();
-          const code = (await createShortLink(FormData)) as string;
-          updateForm({
-            type: "code",
-            code,
-          });
+          const response = await createShortLink(FormData);
+          if (response?.error) {
+            updateForm({
+              type: "error",
+              error: response.error,
+            });
+            return;
+          }
+          if (response?.code) {
+            updateForm({
+              type: "code",
+              code: response.code,
+            });
+            const newHistory = [...history, response.code];
+            updateHistory(newHistory);
+          }
           updateForm({
             type: "loading",
             isLoading: false,
