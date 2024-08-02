@@ -2,6 +2,7 @@ type LinkDB = {
   _id: string;
   origin: string;
   short: string;
+  code: boolean;
   __v?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -10,6 +11,7 @@ type LinkDB = {
 type Link = {
   origin: string;
   short: string;
+  code: boolean;
 };
 
 type ThemeType = "light" | "system" | "dark";
