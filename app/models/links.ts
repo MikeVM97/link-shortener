@@ -9,6 +9,7 @@ const linkSchema = new Schema<Link>(
   {
     origin: { type: String, required: true },
     short: { type: String, required: true },
+    code: { type: Boolean, required: true },
   }
   // { timestamps: true }
 );
