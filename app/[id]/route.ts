@@ -1,9 +1,11 @@
 import LinkModel from "@/app/models/links";
+import connectDB from "../lib/connect-db";
 
 export const maxDuration = 30;
 
 export async function GET(req: Request) {
   try {
+    connectDB();
     const id = req.url.slice(req.url.lastIndexOf("/") + 1);
     const linkFound = await LinkModel.findOne({ short: id });
     if (!linkFound) {
@@ -14,7 +16,9 @@ export async function GET(req: Request) {
     }
     return Response.redirect(linkFound.origin);
   } catch (error) {
-    return Response.json(error, { status: 500 });
+    if (error instanceof Error) {
+      return Response.json(error, { status: 500 });
+    }
   }
 }
 
