@@ -18,12 +18,12 @@ export default function TrashIcon({ onClick }: TrashIconProps) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       /* "0 0 111.57 127.81" */
-      viewBox="-20 -60 151.57 247.81"
+      viewBox="-15 10 141.57 107.81"
       // viewBox="0 0 111.57 127.81"
       fill="black"
       strokeWidth={0}
       width={20}
-      height={40}
+      height={20}
       onClick={() => {
         setIsClicked(true);
         setTimeout(() => {
