@@ -36,7 +36,15 @@ export default function UrlShortResult() {
           onMouseOver={() => setShowCopyTooltip(true)}
           onMouseLeave={() => setShowCopyTooltip(false)}
         >
-          <CopyIcon onClick={() => handleCopy(path)} />
+          <CopyIcon
+            onClick={() => handleCopy(path)}
+            width={20}
+            height={20}
+            rectFill="fill-none"
+            rectStroke="stroke-black dark:stroke-white"
+            polygonFill="fill-black dark:fill-white"
+            polygonStroke="stroke-black dark:stroke-white"
+          />
           {showCopyTooltip && (
             <ToolTip text="Copy url" position="left-1/2 after:left-1/2" />
           )}
