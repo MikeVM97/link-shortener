@@ -1,7 +1,7 @@
 import LinkModel from "@/app/models/links";
 import connectDB from "../lib/connect-db";
 
-export const maxDuration = 30;
+// export const maxDuration = 30;
 
 export async function GET(req: Request) {
   try {
