@@ -1,13 +1,22 @@
-// "use client";
 import { useState } from "react";
 import { useModal } from "../hooks/useModal";
 import { useTranslation } from "react-i18next";
 
 type TrashIconProps = {
   onClick: () => void;
+  width: number;
+  height: number;
+  fill?: string;
+  stroke?: string;
 };
 
-export default function TrashIcon({ onClick }: TrashIconProps) {
+export default function TrashIcon({
+  onClick,
+  width,
+  height,
+  fill,
+  stroke,
+}: TrashIconProps) {
   const [isClicked, setIsClicked] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -17,13 +26,10 @@ export default function TrashIcon({ onClick }: TrashIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      /* "0 0 111.57 127.81" */
       viewBox="-15 10 141.57 107.81"
-      // viewBox="0 0 111.57 127.81"
-      fill="black"
       strokeWidth={0}
-      width={20}
-      height={20}
+      width={width}
+      height={height}
       onClick={() => {
         setIsClicked(true);
         setTimeout(() => {
@@ -41,7 +47,7 @@ export default function TrashIcon({ onClick }: TrashIconProps) {
           }, 500);
         }, 800);
       }}
-      className="cursor-pointer dark:fill-white"
+      className={`${fill} ${stroke} cursor-pointer`}
     >
       <g>
         <circle

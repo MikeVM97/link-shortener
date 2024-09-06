@@ -1,19 +1,29 @@
 type EyesIconProps = {
   onClick: () => void;
   isHidden: boolean;
+  width: number;
+  height: number;
+  fill?: string;
+  stroke?: string;
 };
 
-export default function EyesIcon({ onClick, isHidden }: EyesIconProps) {
+export default function EyesIcon({
+  onClick,
+  isHidden,
+  width,
+  height,
+  fill,
+  stroke,
+}: EyesIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox={isHidden ? "0 0 159.8 126.87" : "0 0 142.99 112.14"}
-      width={20}
-      height={20}
-      fill="black"
+      width={width}
+      height={height}
       strokeWidth={0}
       onClick={onClick}
-      className="cursor-pointer dark:fill-white"
+      className={`${fill} ${stroke} cursor-pointer`}
     >
       {!isHidden && (
         <g>
