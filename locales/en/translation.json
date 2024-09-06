@@ -67,7 +67,12 @@
     "copyUrl": "Copy link",
     "showUrl": "Show link",
     "hideUrl": "Hide link",
-    "deleteUrl": "Delete"
+    "deleteUrl": "Delete",
+    "hideAll": "Hide all",
+    "showAll": "Show all",
+    "deleteAll": "Delete all",
+    "showMore": "Show more",
+    "showLess": "Show less"
   },
   "modal": {
     "copyUrl": "Copied to the clipboard",
