@@ -1,15 +1,22 @@
 "use client";
 import { createContext, useState, useEffect, ReactNode } from "react";
 
+type HistoryItem = {
+  code: string;
+  visible: boolean;
+};
+
+type NewHistory = HistoryItem[] | [];
+
 type HistoryContextType = {
-  history: string[] | [];
-  updateHistory: (newHistory: string[]) => void;
+  history: NewHistory;
+  updateHistory: (newHistory: NewHistory) => void;
 };
 
 export const HistoryContext = createContext<HistoryContextType | null>(null);
 
 export default function HistoryProvider({ children }: { children: ReactNode }) {
-  const [history, setHistory] = useState<string[] | []>([]);
+  const [history, setHistory] = useState<NewHistory>([]);
 
   useEffect(() => {
     const historyStorage =
@@ -17,7 +24,7 @@ export default function HistoryProvider({ children }: { children: ReactNode }) {
     setHistory(historyStorage);
   }, []);
 
-  const updateHistory = (newHistory: string[]) => {
+  const updateHistory = (newHistory: NewHistory) => {
     setHistory(newHistory);
     localStorage.setItem("history", JSON.stringify(newHistory));
   };

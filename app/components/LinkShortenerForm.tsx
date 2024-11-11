@@ -12,7 +12,7 @@ import { createShortLink } from "../lib/actions";
 export default function LinkShortenerForm() {
   const { t } = useTranslation();
   const { history, updateHistory } = useHistory();
-  const { form, updateForm } = useForm();
+  const { updateForm } = useForm();
 
   const ref = useRef<HTMLFormElement>(null);
 
@@ -79,6 +79,10 @@ export default function LinkShortenerForm() {
               type: "error",
               error: response.error,
             });
+            updateForm({
+              type: "loading",
+              isLoading: false,
+            });
             return;
           }
           if (response?.code) {
@@ -86,13 +90,16 @@ export default function LinkShortenerForm() {
               type: "code",
               code: response.code,
             });
-            const newHistory = [...history, response.code];
+            const newHistory = [
+              ...history,
+              { code: response.code, visible: true },
+            ];
             updateHistory(newHistory);
+            updateForm({
+              type: "loading",
+              isLoading: false,
+            });
           }
-          updateForm({
-            type: "loading",
-            isLoading: false,
-          });
         }}
         className="flex flex-col items-center justify-center gap-y-5 py-4 px-2 sm:px-4 md:px-0"
       >

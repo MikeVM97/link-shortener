@@ -13,39 +13,64 @@ type HistoryItemProps = {
   code: string;
   result: string;
   index: number;
+  isHidden: boolean;
 };
 
-export default function HistoryItem({ code, result, index }: HistoryItemProps) {
+export default function HistoryItem({
+  code,
+  result,
+  index,
+  isHidden,
+}: HistoryItemProps) {
   const { t } = useTranslation();
 
-  const [isHidden, setIsHidden] = useState(true);
   const [showCopyTooltip, setShowCopyTooltip] = useState(false);
   const [showEyesTooltip, setShowEyesTooltip] = useState(false);
   const [showTrashTooltip, setShowTrashTooltip] = useState(false);
 
   const { history, updateHistory } = useHistory();
 
-  const handleHide = () => {
-    setIsHidden(!isHidden);
-  };
-
-  const handleDelete = () => {
+  const handleDeleteItem = () => {
     const newHistory = history.filter((_item, i) => i !== index);
     updateHistory(newHistory);
   };
 
+  const handleHideItem = () => {
+    const newHistory = history.map((item, i) => {
+      if (i === index) {
+        return {
+          ...item,
+          visible: !item.visible,
+        };
+      }
+      return item;
+    });
+    updateHistory(newHistory);
+  };
+
   return (
-    <li className="flex items-center justify-between">
-      <Link href={code} target="_blank" className="font-semibold">
-        {isHidden ? "******" : result}
-      </Link>
+    <>
+      <div className="flex gap-x-2">
+        <span className="">{index + 1}.</span>
+        <Link href={code} target="_blank" className="font-semibold">
+          {isHidden ? "******" : result}
+        </Link>
+      </div>
       <div className="flex items-center justify-between gap-x-4">
         <div
           className="relative"
           onMouseOver={() => setShowCopyTooltip(true)}
           onMouseLeave={() => setShowCopyTooltip(false)}
         >
-          <CopyIcon onClick={() => handleCopy(result)} />
+          <CopyIcon
+            onClick={() => handleCopy(result)}
+            width={20}
+            height={20}
+            rectFill="fill-none"
+            rectStroke="stroke-black dark:stroke-white"
+            polygonFill="fill-black dark:fill-white"
+            polygonStroke="stroke-black dark:stroke-white"
+          />
           {showCopyTooltip && (
             <ToolTip
               text={t("icons.copyUrl")}
@@ -58,7 +83,13 @@ export default function HistoryItem({ code, result, index }: HistoryItemProps) {
           onMouseOver={() => setShowEyesTooltip(true)}
           onMouseLeave={() => setShowEyesTooltip(false)}
         >
-          <EyesIcon onClick={handleHide} isHidden={isHidden} />
+          <EyesIcon
+            onClick={handleHideItem}
+            isHidden={isHidden}
+            width={20}
+            height={20}
+            fill="fill-dark dark:fill-white"
+          />
           {showEyesTooltip && (
             <ToolTip
               text={isHidden ? t("icons.showUrl") : t("icons.hideUrl")}
@@ -71,15 +102,20 @@ export default function HistoryItem({ code, result, index }: HistoryItemProps) {
           onMouseOver={() => setShowTrashTooltip(true)}
           onMouseLeave={() => setShowTrashTooltip(false)}
         >
-          <TrashIcon onClick={handleDelete} />
+          <TrashIcon
+            onClick={handleDeleteItem}
+            width={20}
+            height={20}
+            fill="fill-black dark:fill-white"
+          />
           {showTrashTooltip && (
             <ToolTip
               text={t("icons.deleteUrl")}
-              position="-left-1/2 after:left-3/4 lg:left-1/2 lg:after:left-1/2"
+              position="-left-[20%] after:left-[75%] lg:left-1/2 lg:after:left-1/2"
             />
           )}
         </div>
       </div>
-    </li>
+    </>
   );
 }

@@ -67,7 +67,12 @@
     "copyUrl": "Copiar enlace",
     "showUrl": "Mostrar enlace",
     "hideUrl": "Ocultar enlace",
-    "deleteUrl": "Eliminar"
+    "deleteUrl": "Eliminar",
+    "hideAll": "Ocultar todo",
+    "showAll": "Mostrar todo",
+    "deleteAll": "Eliminar todo",
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos"
   },
   "modal": {
     "copyUrl": "Copiado al portapapeles",
